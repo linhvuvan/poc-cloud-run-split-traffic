@@ -3,7 +3,7 @@
   "main": "index.ts",
   "scripts": {
     "deploy": "pulumi up -y -s dev",
-    "destroy": "pulumi destroy -y"
+    "destroy": "pulumi destroy -y -s dev"
   },
   "devDependencies": {
     "@types/node": "^16"

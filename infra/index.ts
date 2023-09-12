@@ -4,7 +4,7 @@ import * as docker from '@pulumi/docker';
 
 const PORT = 3000;
 const IMAGE_NAME = 'pulumi-app';
-const REVISION = 5;
+const REVISION = 11;
 const SERVICE_NAME = 'pulumi-app';
 
 const image = new docker.Image(IMAGE_NAME, {
@@ -36,21 +36,12 @@ const service = new gcp.cloudrun.Service(SERVICE_NAME, {
               path: '/healthz',
               port: PORT,
             },
+            initialDelaySeconds: 240,
           },
         },
       ],
     },
   },
-  traffics: [
-    {
-      latestRevision: true,
-      percent: 0,
-    },
-    {
-      revisionName: `pulumi-app-revision-${REVISION - 1}`,
-      percent: 100,
-    },
-  ],
 });
 
 // DON'T NEED TO CARE
