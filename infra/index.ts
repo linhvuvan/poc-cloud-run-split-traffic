@@ -53,6 +53,8 @@ const service = new gcp.cloudrun.Service(SERVICE_NAME, {
   ],
 });
 
+// DON'T NEED TO CARE
+// allow all users to access
 const noauthIAMPolicy = gcp.organizations.getIAMPolicy({
   bindings: [
     {
